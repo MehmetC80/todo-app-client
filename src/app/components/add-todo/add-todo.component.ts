@@ -1,5 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Todo } from 'src/app/interfaces/todo';
+import { UiService } from 'src/app/service/ui.service';
 
 @Component({
   selector: 'app-add-todo',
@@ -13,7 +15,13 @@ export class AddTodoComponent {
   day: Date | '' = '';
   reminder: boolean = false;
 
-  constructor() {}
+  showAddTodo: boolean = true;
+  subscription: Subscription;
+  constructor(private uiService: UiService) {
+    this.subscription = this.uiService
+      .onToggle()
+      .subscribe((value) => (this.showAddTodo = value));
+  }
 
   onSubmit() {
     if (!this.text) {

@@ -13,9 +13,9 @@ export class HeaderComponent {
   subscription: Subscription;
 
   constructor(private uiService: UiService) {
-    this.subscription = this.uiService.onToggle().subscribe({
-      next: (value) => (this.showAddTodo = value),
-    });
+    this.subscription = this.uiService
+      .onToggle()
+      .subscribe((value) => (this.showAddTodo = value));
   }
 
   toggleAddTodo() {
