@@ -12,6 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { AddTodoComponent } from './components/add-todo/add-todo.component';
 import localeDe from '@angular/common/locales/de';
 import { registerLocaleData } from '@angular/common';
+import { AboutComponent } from './components/pages/about/about.component';
+import { FooterComponent } from './components/pages/footer/footer.component';
 registerLocaleData(localeDe, 'de');
 
 @NgModule({
@@ -22,6 +24,8 @@ registerLocaleData(localeDe, 'de');
     TodosComponent,
     TodoItemComponent,
     AddTodoComponent,
+    AboutComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
