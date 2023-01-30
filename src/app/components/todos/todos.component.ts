@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { find } from 'rxjs';
 import { Todo } from 'src/app/interfaces/todo';
 import { TodoService } from 'src/app/service/todo.service';
 
@@ -33,7 +32,15 @@ export class TodosComponent implements OnInit {
   toggleReminder(todo: Todo) {
     todo.reminder = !todo.reminder;
     this.todoService.updateTodoReminder(todo).subscribe({
-      next: (totos) => this.todos,
+      next: (todos) => this.todos,
+    });
+  }
+
+  addTodo(todo: Todo) {
+    this.todoService.addTodo(todo).subscribe({
+      next: (todo) => this.todos.push(todo),
+      error: (err: Error) => console.error('Observer got an error ' + err),
+      complete: () => console.log('Observer got complete notification'),
     });
   }
 }

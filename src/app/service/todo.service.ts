@@ -27,4 +27,8 @@ export class TodoService {
       todo
     );
   }
+
+  addTodo(todo: Todo): Observable<Todo> {
+    return this.http.post<Todo>(environment.todoAppBaseUrl + '/todos', todo);
+  }
 }
