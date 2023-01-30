@@ -1,11 +1,20 @@
 <div
-  class="bg-slate-100 my-2 px-4 py-2 mx-4 cursor-pointer hover:scale-105 transition-all duration-300"
+  (dblclick)="onToggle(todo)"
+  [ngStyle]="{
+    border: todo.reminder === true ? '3px solid green' : '3px solid red'
+  }"
+  class="bg-slate-200 text-slate-900 my-4 px-4 py-2 mx-20 cursor-pointer hover:scale-105 transition-all duration-300"
 >
   <h3 class="flex justify-between items-center">
-    <div class="">
+    <div class="font-semibold">
       {{ todo.text }}
     </div>
-    <fa-icon [icon]="faTimes" [ngStyle]="{ color: 'red' }"></fa-icon>
+    <fa-icon
+      class="text-2xl pt-4"
+      [icon]="faTimes"
+      [ngStyle]="{ color: 'red' }"
+      (click)="onDelete(todo)"
+    ></fa-icon>
   </h3>
-  <p>{{ todo.day }}</p>
+  <p class="text-sm">{{ todo.day | date }}</p>
 </div>

@@ -1,1 +1,6 @@
-<app-todo-item *ngFor="let todo of todos" [todo]="todo"></app-todo-item>
+<app-todo-item
+  *ngFor="let todo of todos"
+  [todo]="todo"
+  (onDeleteTodo)="deleteTodo(todo)"
+  (onToggleReminder)="toggleReminder(todo)"
+></app-todo-item>
